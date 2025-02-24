@@ -1,8 +1,9 @@
-# React + Vite
+This is a custom video player in React, without any 3rd party library.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The final custom component is in ChunkedVideoPlayer(props).jsx in which i have created a component with 2 props, video url and chunkSize. 
+Here, video url is simple, the link of your video & 2nd prop chunkSize which is nothing but the chunk percentage. for eg- if chunkSize is 10 then there will be 10 parts of the video divided equally and for the starting, only 0-10% will be loaded and then so on.
 
-Currently, two official plugins are available:
+For code-> 
+Component is ChunkedVideoPlayer(props).jsx
+App2.jsx for our app.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
