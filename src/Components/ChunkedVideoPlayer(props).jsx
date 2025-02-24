@@ -13,11 +13,11 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-const ChunkedVideoPlayer = ({ src, chunkSize = 5 }) => {
+const ChunkedVideoPlayer = ({ src, chunkSize}) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentChunk, setCurrentChunk] = useState(1);
-  const totalChunks = Math.ceil(100 / chunkSize); // Calculate chunks dynamically
+  const totalChunks = Math.ceil(100 / chunkSize); // Calculate chunks dynamically -> Math.ceil to convert the integer to whole number. 
 
   useEffect(() => {
     const video = videoRef.current;
