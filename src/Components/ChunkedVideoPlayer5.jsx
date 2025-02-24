@@ -1,14 +1,3 @@
-// progressive loading in chunks 
-// loads first 25% of the video, then after completion the other 25% and so on. 
-// Continuing the process until the full video is loaded.
-// reduces server load and minimalize initial loading time of the video. 
-
-// used onTimeUpdate for loading the next chunk. 
-// using range here that from 0 to 25 it is completed then 25 to 50 then 50-75 etc
-// Use chunkCount as 4 for 25% loading ( 25* 4 = 100)
-
-// ---------------------------------------------------------------------
-
 // For range in 5's, 0-5, 5-10 etc 
 // Use chunkCount as 20 for 5% loading (5*20= 100) i.e splitting the video in 20 parts.
 // Making another function for the same. 
@@ -18,21 +7,20 @@
 // so writing a function which uses props, with the x number of percentage then it will be great. 
 // we just have to change the chunkCount and divide it into equal parts. ( divide by 100 )
 
+
 import React, { useEffect, useRef, useState } from "react";
 
 const ChunkedVideoPlayer = ({ src }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentChunk, setCurrentChunk] = useState(1);
-  const chunkCount = 4; // Split video into 4 parts
+  const totalChunks = 20; // Divide the video into 20 parts
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Load the first chunk (initial 25%)
     const handleLoadedMetadata = () => {
-      const duration = video.duration;
       video.currentTime = 0;
       video.pause();
     };
@@ -47,14 +35,13 @@ const ChunkedVideoPlayer = ({ src }) => {
     if (!video) return;
 
     const duration = video.duration;
-    const chunkEndTime = (currentChunk / chunkCount) * duration;
+    const nextChunkEndTime = ((currentChunk * 5) / 100) * duration; // Expanding range
 
-    if (video.currentTime >= chunkEndTime && currentChunk < chunkCount) {
+    if (video.currentTime >= nextChunkEndTime && currentChunk < totalChunks) {
       setCurrentChunk((prev) => prev + 1);
-      video.play(); // Continue playing the next chunk
+      video.play(); // Continue playing
     }
   };
-
 
   return (
     <div className="flex justify-center items-center">

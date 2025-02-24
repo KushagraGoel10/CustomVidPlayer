@@ -9,7 +9,6 @@ const App = () => {
       {/* Video only loads when scrolled into view */}
       <VideoPlayer 
         src="https://www.w3schools.com/html/mov_bbb.mp4" 
-        poster="https://via.placeholder.com/640x360?text=Loading+Video" 
       />
 
       {/* Add some space to demonstrate lazy loading */}
@@ -20,7 +19,6 @@ const App = () => {
       {/* Another video to test lazy loading */}
       <VideoPlayer 
         src="https://www.w3schools.com/html/movie.mp4" 
-        poster="https://via.placeholder.com/640x360?text=Loading+Video" 
       />
     </div>
   );
